@@ -34,4 +34,3 @@ pull from Github and bundle install
 
 # How to use the app
 General user interface.
-
