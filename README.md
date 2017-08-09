@@ -3,7 +3,7 @@
 Barbeque Finder 
 
 # Names and github handle for people on the team
-Erica     GitHub:ericasboren
+Erika     GitHub:erikasboren
 Sinclair  GitHub:sinclairswan
 Joseph    GitHub:josekim
 
