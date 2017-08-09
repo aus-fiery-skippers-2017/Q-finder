@@ -24,7 +24,7 @@
       }
 
       function callback(results, status,pagination) {
-        textIt(results)
+        $("#stuff").html(htmlIt(results))
         console.log(results)
         // console.log(pagination)
         // console.log(pagination.nextPage())
@@ -49,22 +49,30 @@
           infowindow.open(map, this);
         });
       }
-function textIt(result) {
-
+function htmlIt(result) {
+  text ="<ul>"
   for (var i = 0; i < result.length;i++)  {
+    text +=`<li><p> Place:${result[i].name}</p>
+            <p>place_id${result[i].id}</p>`
+    if (result[i].photos){
+      text +=`<p><img src="${result[i].photos[0].getUrl({maxWidth:100})}" alt="Smiley face" ></p>`
+    }
+    text +=`</li>`
     // console.log(result[i].geometry)
     // console.log(result[i].html_attributions)
     // console.log(result[i].icon)
     // console.log(result[i].id)
     // console.log(result[i].name)
     // console.log(result[i].opening_hours)
-    // console.log(result[i].photos)
+    console.log(result[i].photos)
     // console.log(result[i].place_id)
     // console.log(result[i].rating)
     // console.log(result[i].reference)
     // console.log(result[i].types)
-
   }
+  text+="</ul>"
+  console.log(text)
+  return (text)
 }
 
 $( document ).ready(function() {
