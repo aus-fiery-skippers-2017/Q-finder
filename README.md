@@ -1,24 +1,37 @@
-# README
+# Name of project:
+Barbeque Finder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Names and github handle for people on the team
+Erika     GitHub:erikasboren
+Sinclair  GitHub:sinclairswan
+Joseph    GitHub:josekim
 
-Things you may want to cover:
+# Description of project
+This is a web application that allows you to find BBQ places based on a location search.
+This project will allow users to sign in with Google account
+Searching by a location search will net a maps and list of locations within the location area.
+Users can see information about businesses including location, pictures, business information - whatever is available through google's API
+There is a Navbar that allows users to quickly navigate the site.  including login, logout, home button, possibly searching
+Users can leave reviews and ratings for a particular business
+Users are able to favorite a location
+User profile pages will display list of places rated, review, favorited places
+User is able to edit reviews and ratings
+Average and display ratings for each business on the business listing(multiple) and business page(single)
 
-* Ruby version
+# API's in Use
+Google-Auth
+Google-Maps/Places
 
-* System dependencies
+# Technology
+-ruby on Rails
+-devise for Authentication
+-javascript/jquery
+-heroku
 
-* Configuration
+# How to install the code locally
+pull from Github and bundle install
 
-* Database creation
 
-* Database initialization
+# How to use the app
+General user interface.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
