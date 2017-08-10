@@ -40,6 +40,11 @@ RSpec.describe Place, type: :model do
       expect(place.errors.messages[:map_id]).to_not be_empty
     end
 
+    it "can save if name match" do
+      place = create(:place)
+      place = Place.create({name:"Franklins",map_id:"asdfasdfasdfasdgaergawregweg"})
+      expect(place.errors.messages[:map_id]).to be_empty
+    end
   end
 
 end
