@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  skip_before_action :verify_authenticity_token
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -12,7 +11,6 @@ class User < ApplicationRecord
  def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
-      user.token =
     end
   end
 
