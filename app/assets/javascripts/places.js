@@ -24,11 +24,6 @@ function initMap() {
 
 function callback(results, status,pagination) {
   $("#stuff").html(htmlIt(results))
-  console.log(results)
-  // console.log(pagination)
-  // console.log(pagination.nextPage())
-  // $('#stuff').html(textIt(results))
-  // console.log(results)
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
@@ -48,11 +43,13 @@ function createMarker(place) {
     infowindow.open(map, this);
   });
 }
+
+//--------------------------------------------------what i'm writing-----------------------
 function htmlIt(result) {
-  text ="<ul>"
+  text ="<ul class='list-group'>"
   for (var i = 0; i < result.length;i++)  {
-    text +=`<li id="${result[i].id}"><p> Place:${result[i].name}</p>
-            <p>place_id${result[i].id}</p>`
+    text +=`<li class="list-group-item" id="${result[i].id}">
+            <p class="places-list-title"> ${result[i].name}</p>`
     if (result[i].photos){
       text +=`<p><img src="${result[i].photos[0].getUrl({maxWidth:100})}" alt="Smiley face" ></p>`
     }
@@ -60,15 +57,39 @@ function htmlIt(result) {
     $.ajax({
       method: "GET",
       url: `places/${result[i].id}`,
-      data: {data:JSON.stringify(result[i].name)}
+      data: {data:result[i].name}
     }).done(function(response){
-      $(document).find(`#${response.map_id}`).append(`<p> created at ${response.created_at} </p>`)
+      server_data = `<div>
+              <p> created at ${response.created_at} </p>
+              <p class="places-list-ratings">Rating: ${giveRatings(response.rating)}</p>
+              </div>`
+      $server_data = $(server_data)
+      $(document).find(`#${response.map_id}`).append(server_data).parent().show()
+
     })
   }
   text+="</ul>"
-  return (text)
+  $text = $(text).hide();
+  return ($text)
 
 }
+
+function giveRatings(number)  {
+  number > 5 ? number = 0: number;
+  number === null ? number = 0: number;
+  star_bad = `<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:black" ></span>`
+  star_good = `<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:yellow" ></span>`
+  rating = ""
+  for(var i = 0; i < 5; i++) {
+    if ( number <= i){
+      rating += star_bad
+    } else {
+      rating += star_good
+    }
+  }
+  return rating
+}
+
 
 $( document ).ready(function() {
     console.log( "ready!" );
