@@ -20,6 +20,7 @@ function initMap() {
           $("#address").html(place.formatted_address)
 
           addGoogleRatings(place.reviews)
+          addGooglePictures(place.photos)
 
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             var marker = new google.maps.Marker({
@@ -28,8 +29,7 @@ function initMap() {
             });
             google.maps.event.addListener(marker, 'click', function() {
               infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                'Place ID: ' + place.place_id + '<br>' +
-                place.formatted_address + '</div>');
+              place.formatted_address + '</div>');
               infowindow.open(map, this);
             });
           }
@@ -41,14 +41,22 @@ function format_hours(hours){
 
 function addGoogleRatings(reviews)  {
   for (var review of reviews) {
-    console.log(review)
     list_element = `<li class="list-group-item"><p>${giveRatings(review.rating)}</p>
                     <p class="author-name">${review.author_name} says </p>
                     <p class="review-text">${review.text} says </p>
                     </li>`
     $(".google-ratings").append(list_element)
   }
+}
 
+function addGooglePictures(pictures){
+
+  for (var y = 0; y < pictures.length; y+=2) {
+      picture = `<div class="col-lg-6 col-md-6 col-sm-6"><img src="${pictures[y].getUrl({maxWidth:200,maxHeight:200})}"> </div>
+      <div class="col-lg-6 col-md-6 col-sm-6"><img src="${pictures[y+1].getUrl({maxWidth:200,maxHeight:200})}"> </div>
+      <div class="clearfix"></div>`
+      $("#pictures").append(picture)
+  }
 }
 
 function giveRatings(number)  {
