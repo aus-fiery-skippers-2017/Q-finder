@@ -13,5 +13,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( places.js )
+Rails.application.config.assets.precompile += %w( homepages.js )
 Rails.application.config.assets.precompile += %w( places.css )
 Rails.application.config.assets.precompile += %w( place.js )
