@@ -1,17 +1,11 @@
 
 
-<h1 class="page-header">Hello</h1>
+<h1 class="page-header">Qfinder</h1>
+
 <% if current_user %>
 
-<h2>You are signed in with <%= current_user.provider %></h2>
-<div class="row">
-  <div class=" col-md-4">
-    <div class="thumbnail">
-      <img src=<%=current_user.picture_url%>>	
-     
-    </div>
-  </div>
-</div>
+<%= render "profile" %>
+
 <div class="container">
 	
 </div>
