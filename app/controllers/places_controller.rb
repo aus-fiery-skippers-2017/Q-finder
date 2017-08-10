@@ -11,6 +11,8 @@ class PlacesController < ApplicationController
   end
 
   def index
+    @location_name = "Austin"
+    @location = {lat: "30.2672", lng: "-97.7431"}
   end
 
   private

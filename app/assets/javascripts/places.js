@@ -5,17 +5,17 @@ var map;
 var infowindow;
 
 function initMap() {
-  var austin = {lat: 30.2672, lng: -97.7431};
+
 
   map = new google.maps.Map(document.getElementById('map-container'), {
-    center: austin,
-    zoom: 15
+    center: this_place,
+    zoom: 13
   });
 
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);
   service.textSearch({
-    location: austin,
+    location: this_place,
     query:'barbeque',
     radius: 2500,
     type: ['restaurant']
@@ -48,27 +48,19 @@ function createMarker(place) {
 function htmlIt(result) {
   text ="<ul class='list-group'>"
   for (var i = 0; i < result.length;i++)  {
-    text +=`<li class="list-group-item" id="${result[i].id}">
-            <p class="places-list-title"> ${result[i].name}</p>`
+    text +=`<li class="list-group-item" id="${result[i].place_id}"> `
     if (result[i].photos){
-      text +=`<p><img src="${result[i].photos[0].getUrl({maxWidth:100})}" alt="Smiley face" ></p>`
+      text +=`<p class="pull-right"><img src="${result[i].photos[0].getUrl({maxWidth:100})}" alt="Smiley face" ></p>`
     }
-    text +=`</li>`
-    $.ajax({
-      method: "GET",
-      url: `places/${result[i].id}`,
-      data: {data:result[i].name}
-    }).done(function(response){
-      server_data = `<div>
-              <p> created at ${response.created_at} </p>
-              <p class="places-list-ratings">Rating: ${giveRatings(response.rating)}</p>
-              </div>`
-      $server_data = $(server_data)
-      $(document).find(`#${response.map_id}`).append(server_data).parent().show()
+    text +=`<p class="places-list-title"> <a href="places/${result[i].place_id}"> ${result[i].name}</a></p>
+            <p class="places-list-ratings">Google Rating: ${giveRatings(result[i].rating)}</p>`
 
-    })
+    text +=`</li>`
+    console.log(result[i])
+    callAjax(result[i])
   }
   text+="</ul>"
+
   $text = $(text).hide();
   return ($text)
 
@@ -88,6 +80,20 @@ function giveRatings(number)  {
     }
   }
   return rating
+}
+
+function callAjax (result) {
+  $.ajax({
+    method: "GET",
+    url: `places/${result.place_id}`,
+    data: {data:result.name}
+  }).done(function(response){
+    server_data = `<div>
+            <p class="places-list-ratings">Q-finder Rating: ${giveRatings(response.rating)}</p>
+            </div>`
+    $server_data = $(server_data)
+    $(document).find(`#${response.map_id}`).append(server_data).parent().show()
+  })
 }
 
 
