@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'launchy'
   gem 'simplecov', :require => false, :group => :test
+  gem 'factory_girl_rails'
 end
 
 group :development do
