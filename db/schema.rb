@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20170810175456) do
     t.string "map_id"
     t.string "name"
     t.integer "rating"
+    t.string "lat"
+    t.string "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

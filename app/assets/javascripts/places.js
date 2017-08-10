@@ -56,7 +56,6 @@ function htmlIt(result) {
             <p class="places-list-ratings">Google Rating: ${giveRatings(result[i].rating)}</p>`
 
     text +=`</li>`
-    console.log(result[i])
     callAjax(result[i])
   }
   text+="</ul>"
@@ -86,7 +85,7 @@ function callAjax (result) {
   $.ajax({
     method: "GET",
     url: `places/${result.place_id}`,
-    data: {data:result.name}
+    data: {name:result.name,lat:result.geometry.location.lat().toString(),lng:result.geometry.location.lng().toString()}
   }).done(function(response){
     server_data = `<div>
             <p class="places-list-ratings">Q-finder Rating: ${giveRatings(response.rating)}</p>

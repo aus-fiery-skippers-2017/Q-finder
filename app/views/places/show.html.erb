@@ -1,2 +1,23 @@
-<h1>Places#show</h1>
-<p>Find me in app/views/places/show.html.erb</p>
+
+<div class="container">
+  <h1 class="page-header"><%= @place.name%></h1>
+  <div class="col-lg-8 col-md-8 col-sm-8 ">
+    <div id='map-container' class="iframe-container "></div>
+  </div>
+
+  <div id='stuff' class="col-lg-4 col-md-4 col-sm-4 ">
+    <ul class="list-group">
+      <li class="list-group-item"><p>Google Rating: <span id="rating"></span></p></li>
+      <li class="list-group-item"><p>Phone number: <span id="phone_number"></span></p></li>
+      <li class="list-group-item"><p>Hours: <span id="Hours"></span></p></li>
+      <li class="list-group-item"><p>Address: <span id="address"></span></p></li>
+    </ul>
+  </div>
+
+  <div class="col-lg-8 col-md-8 col-sm-8 ">
+    <h2> Google Ratings </h2>
+    <ul class="list-group google-ratings">
+    </ul>
+  </div>
+</div>
+
