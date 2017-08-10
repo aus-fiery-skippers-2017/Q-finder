@@ -14,6 +14,8 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -43,6 +45,8 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'launchy'
   gem 'simplecov', :require => false, :group => :test
+  gem 'factory_girl_rails'
+  gem 'pry'
 end
 
 gem 'devise'
