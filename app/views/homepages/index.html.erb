@@ -1,13 +1,31 @@
 
+<html>
 
-<h1 class="page-header">Qfinder</h1>
+<body >
+  <h1 class="page-header">Qfinder</h1>
+  <div class="background-container">
+      <% if current_user %>
+      <%= render "profile" %>
+      <%end %>
 
-<% if current_user %>
+       <div class="background">
 
-<%= render "profile" %>
+        <div class="wrap">
+         <div class="search">
+            <input type="text" class="searchTerm" placeholder="What city are you looking for?">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+           </button>
+         </div>
+      </div>
 
-<div class="container">
-	
-</div>
+     </div>
+  </div>
+</body>
+</html>
 
-<%end %>
+
+
+
+
+
