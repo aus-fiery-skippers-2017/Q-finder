@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
 
     if request.xhr?
      if @review.save
+      @place.update_reviews
       render json: @review
      else
         status 422
