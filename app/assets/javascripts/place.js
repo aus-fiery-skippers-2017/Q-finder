@@ -12,7 +12,7 @@ function initMap() {
         service.getDetails({
           placeId: place_id
         }, function(place, status) {
-          console.log(place)
+
 
           $("#rating").html(giveRatings(place.rating))
           $("#phone_number").html(place.formatted_phone_number)
@@ -81,3 +81,36 @@ $( document ).ready(function() {
     initMap()
 
 });
+
+$(document).ready(function(event){
+
+  $(".q-finder-review").on("submit",".new_review",function(event){
+    event.preventDefault();
+    var $newReview = $(this);
+    var $reviewData = $(this).serialize();
+
+    $.ajax({
+      method: $newReview.attr("method"),
+      url: $newReview.attr("action"),
+      data: $reviewData,
+    })
+
+    .done(function(newReviewData){
+      $newReview.hide();
+
+    })
+  })
+
+  $(".btn").on("click",function(event){
+    event.preventDefault();
+    $button = $(this)
+    $.ajax({
+      method:"GET",
+      url:$(this).attr("href")
+    })
+    .done(function(formData){
+      $(".q-finder-review").append(formData)
+      $button.hide()
+    })
+  })
+})
