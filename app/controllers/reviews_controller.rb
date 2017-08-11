@@ -1,14 +1,6 @@
 class ReviewsController < ApplicationController
     # before_action :authenticate_user!
 
-  # def index
-  #   @reviews = Review.all
-  # end
-
-  # def show
-  #   @review = Review.find(params[:id])
-  # end
-
   def new
     @place = Place.find(params[:place_id])
     @review = Review.new
@@ -18,7 +10,6 @@ class ReviewsController < ApplicationController
       else
       end
     else
-      # status 301
       redirect_to new_user_session_path, status:301
     end
   end
@@ -30,8 +21,8 @@ class ReviewsController < ApplicationController
 
     if request.xhr?
      if @review.save
-      render json: @review
-     else
+      render json: {review:@review.review,email:@review.user_email,rating:@review.rating}.to_json
+    else
         status 422
         "review did not save!"
      end

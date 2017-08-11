@@ -4,7 +4,7 @@ function addQFinderRatings(reviews)  {
     console.log(review)
     list_element = `<li class="list-group-item"><p>${giveRatings(review.rating)}</p>
                     <p class="author-name">${review.email} says </p>
-                    <p class="review-text">${review.review} says </p>
+                    <p class="review-text">${review.review} </p>
                     </li>`
     $(".q-finder-ratings").append(list_element)
   }
@@ -54,7 +54,7 @@ function addGoogleRatings(reviews)  {
   for (var review of reviews) {
     list_element = `<li class="list-group-item"><p>${giveRatings(review.rating)}</p>
                     <p class="author-name">${review.author_name} says </p>
-                    <p class="review-text">${review.text} says </p>
+                    <p class="review-text">${review.text} </p>
                     </li>`
     $(".google-ratings").append(list_element)
   }
@@ -107,7 +107,10 @@ $(document).ready(function(event){
     })
 
     .done(function(newReviewData){
-       $newReview.hide();
+      addQFinderRatings([newReviewData])
+      console.log(newReviewData)
+      // debugger;
+      $newReview.hide();
     })
   })
 
