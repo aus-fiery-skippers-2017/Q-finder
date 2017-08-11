@@ -23,7 +23,7 @@ function map_init() {
           placeId: place_id
         }, function(place, status) {
 
-
+          $("#q-rating").html(giveRatings(qFinderRating))
           $("#rating").html(giveRatings(place.rating))
           $("#phone_number").html(place.formatted_phone_number)
           $("#Hours").html(format_hours(place.opening_hours.weekday_text))
