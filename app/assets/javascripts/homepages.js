@@ -10,7 +10,7 @@ $( document ).ready(function() {
         event.preventDefault();
         var $form = $(this);
 
-        var search = $form.children().first().val();
+        var search = $form.find('.searchTerm').val();
         initSearch(search)
       })
 });
