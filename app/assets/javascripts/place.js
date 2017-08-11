@@ -52,8 +52,8 @@ function addGoogleRatings(reviews)  {
 function addGooglePictures(pictures){
 
   for (var y = 0; y < pictures.length; y+=2) {
-      picture = `<div class="col-lg-6 col-md-6 col-sm-6"><img src="${pictures[y].getUrl({maxWidth:200,maxHeight:200})}"> </div>
-      <div class="col-lg-6 col-md-6 col-sm-6"><img src="${pictures[y+1].getUrl({maxWidth:200,maxHeight:200})}"> </div>
+      picture = `<div class="col-lg-6 col-md-6 col-sm-6 center-cropped" style="background-image: url(${pictures[y].getUrl({maxWidth:300,maxHeight:300})});"> </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 center-cropped" style="background-image: url(${pictures[y+1].getUrl({maxWidth:200,maxHeight:200})});"></div>
       <div class="clearfix"></div>`
       $("#pictures").append(picture)
   }
