@@ -49,10 +49,10 @@ function htmlIt(result) {
   for (var i = 0; i < result.length;i++)  {
     text +=`<li class="list-group-item" id="${result[i].place_id}"> `
     if (result[i].photos){
-      text +=`<p class="pull-right"><img src="${result[i].photos[0].getUrl({maxWidth:100})}" alt="Smiley face" ></p>`
+      text +=`<div class="pull-right center-cropper-title" style="background-image:url(${result[i].photos[0].getUrl({maxWidth:100})});"></div>`
     }
-    text +=`<p class="places-list-title"> <a href="places/${result[i].place_id}"> ${result[i].name}</a></p>
-            <p class="places-list-ratings">Google Rating: ${giveRatings(result[i].rating)}</p>`
+    text +=`<div class="bbq-place-info"><p class="places-list-title"> <a href="places/${result[i].place_id}"> ${result[i].name}</a></p>
+            <p class="places-list-ratings">Google Rating: <span class="no-split">${giveRatings(result[i].rating)}</span></p></div>`
 
     text +=`</li>`
     callAjax(result[i])
@@ -86,11 +86,12 @@ function callAjax (result) {
     url: `places/${result.place_id}`,
     data: {name:result.name,lat:result.geometry.location.lat().toString(),lng:result.geometry.location.lng().toString()}
   }).done(function(response){
-    server_data = `<div>
-            <p class="places-list-ratings">Q-finder Rating: ${giveRatings(response.rating)}</p>
-            </div>`
+    server_data = `
+            <p class="places-list-ratings">Q-finder Rating: <span class="no-split">${giveRatings(response.rating)}</span></p>
+            `
     $server_data = $(server_data)
-    $(document).find(`#${response.map_id}`).append(server_data).parent().show()
+     $(document).find(`#${response.map_id}`).find(".bbq-place-info").append(server_data)
+    $(document).find(`#${response.map_id}`).parent().show()
   })
 }
 

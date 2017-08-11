@@ -2,16 +2,10 @@
 <html>
   <head>
     <title>QFinder</title>
-    <script>
-      <% if !@location.nil? %>
-      var this_place = {lat: <%=@location[:lat]%>, lng: <%=@location[:lng]%>}
-      <% end %>
-    </script>
     <%= csrf_meta_tags %>
-    
     <%= javascript_include_tag "application"%>
     <%= javascript_include_tag "homepages"%>
-    <%= javascript_include_tag "places"%>
+
     <%= stylesheet_link_tag "homepages" %>
     <%= stylesheet_link_tag "application"%>
     <%= stylesheet_link_tag "places"%>
@@ -33,7 +27,7 @@
 
 		<% end %>
 		</p>
-    
+
 
 	  <% if notice %>
 		  <p class="alert alert-success"><%= notice %></p>

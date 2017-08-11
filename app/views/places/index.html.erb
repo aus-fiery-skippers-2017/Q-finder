@@ -1,5 +1,7 @@
-
-
+  <% if !@location.nil? %>
+    <script> var this_place = {lat: <%=@location[:lat]%>, lng: <%=@location[:lng]%>} </script>
+  <% end %>
+  <%= javascript_include_tag "places"%>
 <div class="container">
   <h1 class="page-header">Searching <%= @location_name%> for BBQ</h1>
   <div class="col-lg-8 col-md-8 col-sm-8 ">
