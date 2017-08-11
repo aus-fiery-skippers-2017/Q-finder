@@ -5,7 +5,6 @@
 var submit_info = null;
 
 $( document ).ready(function() {
-    console.log( "ready!" );
 
     $('.search-submit').on('submit', function(event){
         event.preventDefault();
@@ -29,7 +28,8 @@ function initSearch(search_term) {
           result = result.shift();
 
         submit_info = {name:result.name,lat:result.geometry.location.lat().toString(),lng:result.geometry.location.lng().toString()}
-        debugger;
+
+        console.log(submit_info)
         }
 }
 

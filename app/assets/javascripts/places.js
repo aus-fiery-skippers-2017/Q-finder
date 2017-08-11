@@ -6,7 +6,6 @@ var infowindow;
 
 function initMap() {
 
-
   map = new google.maps.Map(document.getElementById('map-container'), {
     center: this_place,
     zoom: 13
