@@ -48,6 +48,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-social-rails (4.12.0)
+      railties (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.15.1)
@@ -80,7 +82,6 @@ GEM
     font-awesome-sass (4.5.0)
       sass (>= 3.2)
     formatador (0.2.5)
-    geocoder (1.4.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     guard (2.14.1)
@@ -277,12 +278,12 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
+  bootstrap-social-rails
   byebug
   capybara (~> 2.13)
   devise
   factory_girl_rails
   font-awesome-sass
-  geocoder
   guard-rspec
   jbuilder (~> 2.5)
   jquery-rails
