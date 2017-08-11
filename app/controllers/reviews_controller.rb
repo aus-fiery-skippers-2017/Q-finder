@@ -22,8 +22,6 @@ class ReviewsController < ApplicationController
     if request.xhr?
      if @review.save
       @place.update_reviews
-      render json: @review
-     else
       render json: {review:@review.review,email:@review.user_email,rating:@review.rating}.to_json
     else
         status 422
