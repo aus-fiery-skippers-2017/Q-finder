@@ -28,8 +28,7 @@ function initSearch(search_term) {
           result = result.shift();
 
         submit_info = {name:result.name,lat:result.geometry.location.lat().toString(),lng:result.geometry.location.lng().toString()}
-
-        console.log(submit_info)
+        window.location.href =`/places?${jQuery.param(submit_info)}`
         }
 }
 
