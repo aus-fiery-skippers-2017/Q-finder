@@ -256,7 +256,7 @@ Devise.setup do |config|
     if provider_name == :google_oauth2
       config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
     elsif provider_name == :facebook
-      config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],  ENV['FACEBOOK_APP_SECRET']
+      config.omniauth :facebook, ENV['FACEBOOK_CLIENT_ID'],  ENV['FACEBOOK_CLIENT_SECRET']
     end
   end
 

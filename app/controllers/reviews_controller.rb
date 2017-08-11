@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    # before_action :authenticate_user!
 
   # def index
   #   @reviews = Review.all
@@ -11,9 +12,14 @@ class ReviewsController < ApplicationController
   def new
     @place = Place.find(params[:place_id])
     @review = Review.new
-    if request.xhr?
-      render :new, layout: false
+    if user_signed_in?
+      if request.xhr?
+        render :new, layout: false
+      else
+      end
     else
+      # status 301
+      redirect_to new_user_session_path, status:301
     end
   end
 

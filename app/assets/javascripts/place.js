@@ -111,14 +111,15 @@ $(document).ready(function(event){
     })
   })
 
-  $(".btn").on("click",function(event){
+  $("#post-review").on("click",function(event){
     event.preventDefault();
     $button = $(this)
     $.ajax({
       method:"GET",
       url:$(this).attr("href")
     })
-    .done(function(formData){
+    .done(function(formData,textStatus,jqXHR){
+      console.log(jqXHR)
       $(".q-finder-review-button").append(formData)
       $button.hide()
     })

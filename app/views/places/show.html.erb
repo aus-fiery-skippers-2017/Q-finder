@@ -15,7 +15,11 @@
   </div>
 
   <div class="q-finder-review-button col-lg-8 col-md-8 col-sm-8">
-    <%= link_to 'Add review', new_place_review_path(@place), role:"button",class:"btn btn-primary" %>
+    <% if user_signed_in? %>
+    <%= link_to 'Add review', new_place_review_path(@place), role:"button",class:"btn btn-primary", id:"post-review" %>
+    <% else %>
+    <%= link_to 'Add review', new_user_session_path, role:"button",class:"btn btn-primary" %>
+    <% end%>
   </div>
 
   <div class="col-lg-8 col-md-8 col-sm-8 ">
