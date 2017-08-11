@@ -1,0 +1,13 @@
+<% @place.reviews.each do %>
+
+<li>
+  <p><%= review.user.name %></p>
+  <p><%= review.ratings %></p>
+  <p><%= review.review %></p>
+</li>
+<% end %>
+
+<li class="list-group-item"><p>${giveRatings(review.rating)}</p>
+                    <p class="author-name">${review.author_name} says </p>
+                    <p class="review-text">${review.text} says </p>
+                    </li>`

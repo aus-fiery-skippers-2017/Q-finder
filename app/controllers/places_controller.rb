@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
   def show
     @place = Place.find_or_create_by(map_id:params[:id])
+
     if @place.id == nil
       puts "this is params data *********************************************************"
       p params_data
@@ -8,12 +9,16 @@ class PlacesController < ApplicationController
       @place.save
 
     end
+
     p params
     if request.xhr?
-
       render json: @place
     else
     @place
+    @reviews = Review.includes(:user).where(place_id:@place.id).map do |review|
+      {review:review.review,email:review.user_email,rating:review.rating}
+    end
+
     render layout: "place"
     end
   end

@@ -3,9 +3,10 @@
   <head>
     <title>QFinder</title>
     <script>
-
+      var qFinderReviews = <%= raw json_escape(@reviews.to_json) %>
       var this_place = {lat: <%=@place[:lat]%>, lng: <%=@place[:lng]%>}
       var place_id = "<%= @place.map_id %>"
+
     </script>
     <%= csrf_meta_tags %>
     <%= javascript_include_tag "place"%>

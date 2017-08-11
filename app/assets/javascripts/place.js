@@ -1,4 +1,14 @@
 //= require jquery
+function addQFinderRatings(reviews)  {
+  for (var review of reviews) {
+    console.log(review)
+    list_element = `<li class="list-group-item"><p>${giveRatings(review.rating)}</p>
+                    <p class="author-name">${review.email} says </p>
+                    <p class="review-text">${review.review} says </p>
+                    </li>`
+    $(".q-finder-ratings").append(list_element)
+  }
+}
 
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map-container'), {
@@ -19,6 +29,7 @@ function initMap() {
           $("#Hours").html(format_hours(place.opening_hours.weekday_text))
           $("#address").html(place.formatted_address)
 
+          addQFinderRatings(qFinderReviews)
           addGoogleRatings(place.reviews)
           addGooglePictures(place.photos)
 
@@ -84,7 +95,7 @@ $( document ).ready(function() {
 
 $(document).ready(function(event){
 
-  $(".q-finder-review").on("submit",".new_review",function(event){
+  $(".q-finder-review-button").on("submit",".new_review",function(event){
     event.preventDefault();
     var $newReview = $(this);
     var $reviewData = $(this).serialize();
@@ -96,8 +107,7 @@ $(document).ready(function(event){
     })
 
     .done(function(newReviewData){
-      $newReview.hide();
-
+       $newReview.hide();
     })
   })
 
@@ -109,8 +119,11 @@ $(document).ready(function(event){
       url:$(this).attr("href")
     })
     .done(function(formData){
-      $(".q-finder-review").append(formData)
+      $(".q-finder-review-button").append(formData)
       $button.hide()
     })
   })
 })
+
+
+

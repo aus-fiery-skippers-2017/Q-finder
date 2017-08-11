@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
         redirect_to place_path(@place)
       else
         render :new, layout: false
+      end
     end
 
   end
