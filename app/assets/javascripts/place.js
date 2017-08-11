@@ -1,6 +1,16 @@
 //= require jquery
+function addQFinderRatings(reviews)  {
+  for (var review of reviews) {
+    console.log(review)
+    list_element = `<li class="list-group-item"><p>${giveRatings(review.rating)}</p>
+                    <p class="author-name">${review.email} says </p>
+                    <p class="review-text">${review.review} says </p>
+                    </li>`
+    $(".q-finder-ratings").append(list_element)
+  }
+}
 
-function initMap() {
+function map_init() {
         var map = new google.maps.Map(document.getElementById('map-container'), {
           center: this_place,
           zoom: 15
@@ -12,13 +22,14 @@ function initMap() {
         service.getDetails({
           placeId: place_id
         }, function(place, status) {
-          console.log(place)
+
 
           $("#rating").html(giveRatings(place.rating))
           $("#phone_number").html(place.formatted_phone_number)
           $("#Hours").html(format_hours(place.opening_hours.weekday_text))
           $("#address").html(place.formatted_address)
 
+          addQFinderRatings(qFinderReviews)
           addGoogleRatings(place.reviews)
           addGooglePictures(place.photos)
 
@@ -52,8 +63,8 @@ function addGoogleRatings(reviews)  {
 function addGooglePictures(pictures){
 
   for (var y = 0; y < pictures.length; y+=2) {
-      picture = `<div class="col-lg-6 col-md-6 col-sm-6"><img src="${pictures[y].getUrl({maxWidth:200,maxHeight:200})}"> </div>
-      <div class="col-lg-6 col-md-6 col-sm-6"><img src="${pictures[y+1].getUrl({maxWidth:200,maxHeight:200})}"> </div>
+      picture = `<div class="col-lg-6 col-md-6 col-sm-6 center-cropped" style="background-image: url(${pictures[y].getUrl({maxWidth:300,maxHeight:300})});"> </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 center-cropped" style="background-image: url(${pictures[y+1].getUrl({maxWidth:200,maxHeight:200})});"></div>
       <div class="clearfix"></div>`
       $("#pictures").append(picture)
   }
@@ -78,6 +89,42 @@ function giveRatings(number)  {
 
 $( document ).ready(function() {
     console.log( "ready!" );
-    initMap()
+    map_init()
 
 });
+
+$(document).ready(function(event){
+
+  $(".q-finder-review-button").on("submit",".new_review",function(event){
+    event.preventDefault();
+    var $newReview = $(this);
+    var $reviewData = $(this).serialize();
+
+    $.ajax({
+      method: $newReview.attr("method"),
+      url: $newReview.attr("action"),
+      data: $reviewData,
+    })
+
+    .done(function(newReviewData){
+       $newReview.hide();
+    })
+  })
+
+  $("#post-review").on("click",function(event){
+    event.preventDefault();
+    $button = $(this)
+    $.ajax({
+      method:"GET",
+      url:$(this).attr("href")
+    })
+    .done(function(formData,textStatus,jqXHR){
+      console.log(jqXHR)
+      $(".q-finder-review-button").append(formData)
+      $button.hide()
+    })
+  })
+})
+
+
+

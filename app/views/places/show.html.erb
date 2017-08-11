@@ -14,14 +14,30 @@
     </ul>
   </div>
 
+  <div class="q-finder-review-button col-lg-8 col-md-8 col-sm-8">
+    <% if user_signed_in? %>
+    <%= link_to 'Add review', new_place_review_path(@place), role:"button",class:"btn btn-primary", id:"post-review" %>
+    <% else %>
+    <%= link_to 'Add review', new_user_session_path, role:"button",class:"btn btn-primary" %>
+    <% end%>
+  </div>
+
+  <div class="col-lg-8 col-md-8 col-sm-8 ">
+    <h2> Q-Finder Ratings </h2>
+    <ul class="list-group q-finder-ratings">
+    </ul>
+  </div>
+
+   <div class="col-lg-4 col-md-4 col-sm-4 pictures-section">
+    <h2> Pictures </h2>
+    <div id='pictures' class="row"> </div>
+  </div>
+
   <div class="col-lg-8 col-md-8 col-sm-8 ">
     <h2> Google Ratings </h2>
     <ul class="list-group google-ratings">
     </ul>
   </div>
-  <div  class="col-lg-4 col-md-4 col-sm-4 ">
-    <h2> Pictures </h2>
-    <div id='pictures' class="row"> </div>
-  </div>
+
 </div>
 
