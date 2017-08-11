@@ -9,7 +9,7 @@
     </script>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "homepages" %>
-    <%= javascript_include_tag "places"%>
+    <%= javascript_include_tag "application"%>
     <%= stylesheet_link_tag "application"%>
     <%= stylesheet_link_tag "places"%>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqtllZChDaFEMFPhL-RJRn-vqNr5o0_c8&libraries=places"></script>
@@ -30,6 +30,7 @@
 
 		<% end %>
 		</p>
+    
 
 	  <% if notice %>
 		  <p class="alert alert-success"><%= notice %></p>
