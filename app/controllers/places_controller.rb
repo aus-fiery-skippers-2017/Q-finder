@@ -2,14 +2,12 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find_or_create_by(map_id:params[:id])
     if @place.id == nil
-
-      p params_data
       @place.update_attributes(params_data)
       @place.save
-
     end
-    p params
-    if request.xhr?
+    if @place.invalid?
+      redirect_to "/"
+    elsif request.xhr?
       render json: @place
     else
     @place
