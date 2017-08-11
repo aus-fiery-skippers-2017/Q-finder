@@ -1,6 +1,6 @@
 //= require jquery
 
-function initMap() {
+function map_init() {
         var map = new google.maps.Map(document.getElementById('map-container'), {
           center: this_place,
           zoom: 15
@@ -78,6 +78,6 @@ function giveRatings(number)  {
 
 $( document ).ready(function() {
     console.log( "ready!" );
-    initMap()
+    map_init()
 
 });
