@@ -2,12 +2,12 @@
   <div class="jumbotron" style="background: none;" >
     <div class="jumbotron-content col-md-3" style="background-color:#E8E6DE; opacity: 0.95; margin-bottom: 15px; border-radius: 10px; padding-top: 10px;"  >
       <p class="jumbotron-lg-only">Join our community</p>
-        <form name="user-info  " ">
+        
          <div class="form-group "  >
 
             <h2>Sign up</h2>
 
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= form_for(resource, as: resource_name, url: "devise/registrations#create"(resource_name)) do |f| %>
               <%= devise_error_messages! %>
 
               <div class="field">
@@ -35,7 +35,7 @@
 
             <%= render "devise/shared/links" %>
           </div>
-        </form>
+        
       </div>
     </div>
   </div>
