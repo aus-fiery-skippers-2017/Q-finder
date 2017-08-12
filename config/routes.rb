@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	 root to: "homepages#index"
   devise_scope :user do
   	post 'sign_in', :to => 'devise/registrations#create', :as => :create_user_registration
+  
   	
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
