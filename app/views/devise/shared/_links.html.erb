@@ -1,6 +1,6 @@
 
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name), id: resource_name %><br />
+  <%= link_to "Log in", new_session_path(resource_name), id: resource_name %><br /> 
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -24,9 +24,9 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
     <% if provider == :facebook %>
 
-      <%= link_to " Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),role:"button", class:"btn btn-primary fa fa-facebook-official" %><br /><br>
+      <%= link_to " Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),role:"button", class:"btn   fa fa-facebook-official", style:"background-color: #3b5998; color: white;" %><br /><br>
     <% elsif provider == :google_oauth2 %>
-     <%= link_to " Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),role:"button", class:"btn btn-primary fa fa-google-plus" %><br /><br>
+     <%= link_to " Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),role:"button", class:"btn fa fa-google-plus ",style:"background-color: #D34836; color: white;"  %><br /><br>
     <% end -%>
   <% end -%>
 <% end -%>
