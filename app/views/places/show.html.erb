@@ -17,9 +17,9 @@
 
   <div class="q-finder-review-button col-lg-8 col-md-8 col-sm-8">
     <% if user_signed_in? %>
-    <%= link_to 'Add review', new_place_review_path(@place), role:"button",class:"btn btn-primary", id:"post-review" %>
+    <%= link_to 'Add review', new_place_review_path(@place), role:"button",class:"btn btn-primary add-review-button", id:"post-review" %>
     <% else %>
-    <%= link_to 'Add review', new_user_session_path, role:"button",class:"btn btn-primary" %>
+    <%= link_to 'Add review', new_user_session_path, role:"button",class:"btn btn-primary add-review-button"  %>
     <% end%>
   </div>
 
