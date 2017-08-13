@@ -68,7 +68,7 @@ function giveRatings(number)  {
   number > 5 ? number = 0: number;
   number === null ? number = 0: number;
   star_bad = `<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:black" ></span>`
-  star_good = `<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:black" ></span>`
+  star_good = `<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:orange" ></span>`
   rating = ""
   for(var i = 0; i < 5; i++) {
     if ( number <= i){
