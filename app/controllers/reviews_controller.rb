@@ -42,9 +42,17 @@ class ReviewsController < ApplicationController
     render :new
   end
 
+  def show
+    @place = Place.find(params[:place_id])
+    @review = @place.reviews.find(params[:id])
+    render :edit  
+  end
+
   def update
     @place = Place.find(params[:place_id])
-    render :new
+    @review = @place.reviews.find(params[:id])
+    @review.update_attributes(review_params)
+    redirect_to edit_user_registration_path
   end
 
   def destroy

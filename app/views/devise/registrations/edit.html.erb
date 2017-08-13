@@ -3,16 +3,21 @@
   <div class="row">
 
      <div class="  col-lg-8 col-md-8 col-sm-12"  style="background: none;" >
-        <div class="jumbotron-content" style="background-color:#E8E6DE; opacity: 0.95; margin-bottom: 15px; border-radius: 10px; padding: 10px; padding-left: 40px;"  >
-          <h2><%= current_user.email %></h2>
+        <div class="jumbotron-content" style="background-color:#e8dee0; opacity: 0.95; margin-bottom: 15px; border-radius: 10px; padding: 10px; padding-left: 40px;"  >
+        <img class="img-circle" src=<%=current_user.picture_url%>>
+          <h4><%= current_user.email %></h4>
           <% current_user.reviews.each do |review| %>
-           <div class="media" >
-             <img class="d-flex mr-3 fa fa-picture-o "  src="..." alt="photo from places">
+           <div class="media list-group-item" >
+             <!-- <img class="d-flex mr-3 fa fa-picture-o "  src="..." alt="photo from places"> -->
              <div class="media-body">
-              <h5 class="mt-0"><%= Place.find(review.place_id).name %> - <%= review.rating %> Stars </h5>
+              <h5 class="mt-0"><h4><%= Place.find(review.place_id).name %></h4>  <% review.rating.times do %>
+               <i class="fa fa-star" aria-hidden="true"></i> </h5>
+               <% end %>
+               <br>
+
                <%= review.review %> 
-               <%= link_to 'edit review', "/places/#{review.place_id}/reviews/#{review.id}",method: :patch, role: "button", class: "btn btn-outline-dark btn-sm" %>
-               <%= link_to 'delete review', "/places/#{review.place_id}/reviews/#{review.id}", method: :delete, role: "button", class: "btn btn-outline-dark btn-sm" %>
+               <%= link_to 'edit', "/places/#{review.place_id}/reviews/#{review.id}", role: "button", class: "btn btn-outline-dark btn-sm" %>
+               <%= link_to 'delete', "/places/#{review.place_id}/reviews/#{review.id}", method: :delete, role: "button", class: "btn btn-outline-dark btn-sm" %>
                </div>
 
             </div>
@@ -24,7 +29,7 @@
      
 
        <div class=" col-lg-4 col-md-4 col-sm-12" style="background: none;" >
-          <div class="jumbotron-content " style="background-color:#E8E6DE; opacity: 0.95; margin-bottom: 15px; border-radius: 10px; padding: 10px; padding-left: 40px;"  >
+          <div class="jumbotron-content " style="background-color:#e8dee0; opacity: 0.95; margin-bottom: 15px; border-radius: 10px; padding: 10px; padding-left: 40px;"  >
            
 
               <h2>Edit Profile </h2>

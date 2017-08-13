@@ -5,18 +5,20 @@
    
 		
 
-		<p> <h1><%= link_to 'Qfinder', root_path, :class => 'nav-link ' %> </h1>
-		 <div class="col-md-8" >
+		<p> <h1><%= link_to 'Qfinder', root_path, :class => 'nav-link page-header ' %> </h1>
+		 <div class="" >
          <%= link_to 'Home', root_path, :class => 'nav-link' %> |
        
-		<% if user_signed_in? %>
-		  Logged in as <strong><%= current_user.email %></strong>.
+		<% if current_user %>
+		  <%= link_to 'Profile', edit_user_registration_path, :class => 'nav-link' %> |
+
+		      Logged in as <strong><%= current_user.email %></strong> |
 		
-		    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> |
-		
-		  
-		    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
-		 
+		    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %> 
+         
+         <a class="navbar-brand"> <img class="img-circle nav-link col" src= <%=current_user.picture_url %>> </a>	
+		         
+		     
 		<% else %>
 		
 		  <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %> |
@@ -27,8 +29,14 @@
 
 		<% end %>
 	
+     
+        
+
 	</div>	</p>
+    
    </nav>
+
+   
 
   </div>
 
