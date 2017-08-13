@@ -37,10 +37,23 @@ class ReviewsController < ApplicationController
 
   end
 
-  def update
+  def edit
+    @place = Place.find(params[:place_id])
+    render :new
   end
 
-  def delete
+  def update
+    @place = Place.find(params[:place_id])
+    render :new
+  end
+
+  def destroy
+
+    @place = Place.find(params[:place_id])
+    #binding.pry
+    @review = @place.reviews.find(params[:id])
+    @review.destroy
+    redirect_to edit_user_registration_path
   end
 
   private

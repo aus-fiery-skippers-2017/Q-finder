@@ -7,11 +7,14 @@
           <h2><%= current_user.email %></h2>
           <% current_user.reviews.each do |review| %>
            <div class="media" >
-             <img class="d-flex mr-3" src="..." alt="Generic placeholder image">
+             <img class="d-flex mr-3 fa fa-picture-o "  src="..." alt="photo from places">
              <div class="media-body">
-              <h5 class="mt-0"><%= Place.find(review.place_id).name %> - <%= review.rating %> </h5>
+              <h5 class="mt-0"><%= Place.find(review.place_id).name %> - <%= review.rating %> Stars </h5>
                <%= review.review %> 
+               <%= link_to 'edit review', "/places/#{review.place_id}/reviews/#{review.id}",method: :patch, role: "button", class: "btn btn-outline-dark btn-sm" %>
+               <%= link_to 'delete review', "/places/#{review.place_id}/reviews/#{review.id}", method: :delete, role: "button", class: "btn btn-outline-dark btn-sm" %>
                </div>
+
             </div>
             <% end %>
           </ul>
