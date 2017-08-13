@@ -44,7 +44,9 @@ class ReviewsController < ApplicationController
 
   def update
     @place = Place.find(params[:place_id])
-    render :new
+    @reviews = @place.reviews.find(params[:id])
+    binding.pry
+    render json: {review:@review.review, rating:@review.rating}.to_json
   end
 
   def destroy
